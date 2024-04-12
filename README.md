@@ -1,6 +1,6 @@
 # dalel
 
-A New Figma Design I Want  To Implement
+A New Figma Design I Want To Implement
 
 ## Getting Started
 
