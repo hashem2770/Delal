@@ -28,6 +28,8 @@ dependencies:
   # for making the splash screen
   flutter_native_splash: 2.3.10
 
+  flutter_svg: 2.0.9
+
 
 
 
