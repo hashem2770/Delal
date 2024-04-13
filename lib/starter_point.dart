@@ -1,3 +1,4 @@
+import 'package:dalel/features/presentation/views/on_boarding/views/on_boarding_view.dart';
 import 'package:flutter/material.dart';
 
 class StarterPoint extends StatelessWidget {
@@ -5,6 +6,6 @@ class StarterPoint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const OnBoardingView();
   }
 }
