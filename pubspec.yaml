@@ -25,6 +25,9 @@ dependencies:
   flutter_bloc: 8.1.1
   equatable: 2.0.5
 
+  # for making the splash screen
+  flutter_native_splash: 2.3.10
+
 
 
 
@@ -55,17 +58,17 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+     - family: Heebo
+       fonts:
+         - asset: assets/fonts/heebo/Heebo-Bold.ttf
+         - asset: assets/fonts/heebo/Heebo-Medium.ttf
+         - asset: assets/fonts/heebo/Heebo-Regular.ttf
+     - family: Poppins
+       fonts:
+         - asset: assets/fonts/poppin/Poppins-Bold.ttf
+         - asset: assets/fonts/poppin/Poppins-Medium.ttf
+         - asset: assets/fonts/poppin/Poppins-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
