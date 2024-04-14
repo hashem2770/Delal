@@ -4,8 +4,10 @@ import 'package:dalel/core/component/custom_button.dart';
 import 'package:dalel/core/component/custom_text_button.dart';
 import 'package:dalel/generated/assets.dart';
 import 'package:dalel/utils/app_styles.dart';
+import 'package:dalel/utils/routing/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class OnBoardingAIView extends StatelessWidget {
   const OnBoardingAIView({super.key});
@@ -40,6 +42,7 @@ class OnBoardingAIView extends StatelessWidget {
               CustomButton(
                 onPressed: () {
                   //todo: go to create account
+                  context.pushReplacementNamed(RoutesName.signUpView);
                 },
                 label: 'Create Account ',
               ),
