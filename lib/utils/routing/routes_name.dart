@@ -4,4 +4,5 @@ class RoutesName {
   static const String onBoardingExplore = 'onBoardingExplore';
   static const String onBoardingHistorical = 'onBoardingHistorical';
   static const String signUpView = 'signUpView';
+  static const String loginView = 'loginView';
 }

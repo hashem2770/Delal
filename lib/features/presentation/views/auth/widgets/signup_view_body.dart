@@ -1,7 +1,9 @@
 import 'package:dalel/core/component/custom_button.dart';
 import 'package:dalel/core/component/custom_text_button.dart';
 import 'package:dalel/utils/app_styles.dart';
+import 'package:dalel/utils/routing/routes_name.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SignUpViewBody extends StatelessWidget {
   const SignUpViewBody({super.key});
@@ -12,7 +14,7 @@ class SignUpViewBody extends StatelessWidget {
       child: SafeArea(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          alignment:  Alignment.center,
+          alignment: Alignment.center,
           child: Column(
             children: [
               const SizedBox(height: 80),
@@ -69,8 +71,13 @@ class SignUpViewBody extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Already have an account?'),
-                  CustomTextButton(onPressed: () {}, label: 'Sign In'),
+                  const Text('Already have an account?'),
+                  CustomTextButton(
+                    onPressed: () {
+                      context.pushReplacement('/login');
+                    },
+                    label: 'Sign In',
+                  ),
                 ],
               ),
             ],

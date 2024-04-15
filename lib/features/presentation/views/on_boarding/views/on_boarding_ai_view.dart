@@ -41,7 +41,6 @@ class OnBoardingAIView extends StatelessWidget {
               ),
               CustomButton(
                 onPressed: () {
-                  //todo: go to create account
                   context.pushReplacementNamed(RoutesName.signUpView);
                 },
                 label: 'Create Account ',
@@ -49,7 +48,7 @@ class OnBoardingAIView extends StatelessWidget {
               const SizedBox(height: 16),
               CustomTextButton(
                 onPressed: () {
-                  //todo: go to login
+                  context.pushReplacementNamed(RoutesName.loginView);
                 },
                 label: 'Login Now',
               )
