@@ -1,7 +1,6 @@
 import 'package:dalel/core/component/custom_button.dart';
 import 'package:dalel/core/component/custom_text_button.dart';
 import 'package:dalel/utils/app_styles.dart';
-import 'package:dalel/utils/routing/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
