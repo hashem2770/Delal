@@ -34,6 +34,8 @@ class Assets {
   static const String imagesSalahElDinDetails = 'assets/images/salah_el_din_details.svg';
   static const String imagesSplash = 'assets/images/splash.png';
   static const String imagesTaote = 'assets/images/tao te.svg';
+  static const String imagesLoginBg = 'assets/images/login_bg.svg';
+  static const String imagesLoginBgPng = 'assets/images/login_bg_png.png';
   static const String imagesTheBattleOfMegiddo = 'assets/images/the_battle_of_megiddo.svg';
   static const String imagesTheHyksosInvasion = 'assets/images/the_hyksos_invasion.svg';
   static const String imagesTheRepublic = 'assets/images/the_republic.svg';
