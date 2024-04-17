@@ -12,8 +12,8 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   # firebase
-  firebase_core: 2.15.1
-  firebase_auth: 4.7.3
+  firebase_core: 2.27.0
+  firebase_auth: 4.17.8
 
   # local storage
   shared_preferences: 2.1.0
@@ -28,9 +28,14 @@ dependencies:
   # for making the splash screen
   flutter_native_splash: 2.3.10
 
+  # for svg pics
   flutter_svg: 2.0.9
 
+  # for routing
   go_router: 13.2.0
+
+  # for show beautiful dialogs
+  awesome_dialog: 3.2.0
 
 
 
