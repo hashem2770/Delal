@@ -1,5 +1,6 @@
 import 'package:dalel/core/component/custom_button.dart';
 import 'package:dalel/core/component/custom_text_button.dart';
+import 'package:dalel/core/error/handle_firebase_error/firebase_exception_handler.dart';
 import 'package:dalel/utils/app_styles.dart';
 import 'package:dalel/utils/routing/routes_name.dart';
 import 'package:flutter/material.dart';
@@ -126,8 +127,8 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 CustomButton(
                   onPressed: () async {
                     try {
-                      if(agreedToTerms){
-                        if (_formKey.currentState!.validate() ) {
+                      if (agreedToTerms) {
+                        if (_formKey.currentState!.validate()) {
                           await FirebaseAuth.instance
                               .createUserWithEmailAndPassword(
                             email: emailController.text,
@@ -141,12 +142,11 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                           'Could not sign up without agreeing to the terms and conditions',
                         );
                       }
-
-                    } on FirebaseAuthException catch (e) {
-                      if (e.code == 'weak-password') {
-                        weakPasswordSnackBar();
-                      } else if (e.code == 'email-already-in-use') {
-                        emailAlreadyInUseSnackBar();
+                    } on FirebaseAuthException catch (error) {
+                      // if condition to avoid putting build context inside async gaps
+                      if (context.mounted) {
+                        handleFirebaseSignUpException(
+                            error: error, context: context);
                       }
                     } catch (e) {
                       generalErrorSnackBar(e.toString());
@@ -162,9 +162,9 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     const Text('Already have an account?'),
                     CustomTextButton(
                       onPressed: () {
-                        context.pushReplacement('/login');
+                        context.pushReplacementNamed(RoutesName.loginView);
                       },
-                      label: 'Sign In',
+                      label: 'Log In',
                     ),
                   ],
                 ),
@@ -178,7 +178,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
 
   //navigate to home view
   void navigateToHomeView() {
-    context.pushReplacementNamed(RoutesName.homeView);
+    context.goNamed(RoutesName.homeView);
   }
 
   // snack bar about successful login

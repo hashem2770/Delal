@@ -1,5 +1,7 @@
 import 'package:dalel/core/component/custom_button.dart';
 import 'package:dalel/core/component/custom_text_button.dart';
+import 'package:dalel/core/error/handle_firebase_error/firebase_exception_handler.dart';
+import 'package:dalel/core/error/handle_firebase_error/snackbars.dart';
 import 'package:dalel/utils/app_styles.dart';
 import 'package:dalel/utils/routing/routes_name.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -27,23 +29,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    // snack bar about wrong password
-    void wrongPasswordSnackBar() {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Wrong Password, please try again'),
-        ),
-      );
-    }
-
-    // snack bar about unfounded user
-    void unfoundedUserSnackBar() {
-      debugPrint('unfounded user');
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('Could not find user, please try again'),
-      ));
-    }
-
     return Form(
       autovalidateMode: AutovalidateMode.always,
       key: _formKey,
@@ -128,34 +113,32 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                         ],
                       ),
                       const SizedBox(
-                        height: 60,
+                        height: 40,
                       ),
                       CustomButton(
-                        label: 'Sign In',
-                        onPressed: () async {
-                          try {
-                            if (_formKey.currentState!.validate()) {
+                          label: 'Log In',
+                          onPressed: () async {
+                            try {
                               await FirebaseAuth.instance
                                   .signInWithEmailAndPassword(
                                 email: emailController.text,
                                 password: passwordController.text,
                               );
-                              successfulLogin();
-                              navigateToHomeView();
+                              // if condition to avoid putting build context inside async gaps
+                              if (context.mounted) {
+                                FirebaseAuthSnackBars.successfulLoginSnackBar(
+                                    context: context);
+                                navigateToHomeView();
+                              }
+                            } on FirebaseAuthException catch (e) {
+                              if (context.mounted) {
+                                handleFirebaseLoginException(
+                                  error: e,
+                                  context: context,
+                                );
+                              }
                             }
-                          } on FirebaseAuthException catch (e) {
-                            // todo: fix context in gap
-                            // todo: snack bars here do not appear, fix it
-                            if (e.code == 'user-not-found') {
-                              debugPrint('user not found============');
-                              unfoundedUserSnackBar();
-                            } else if (e.code == 'wrong-password') {
-                              debugPrint('wrong password=========');
-                              wrongPasswordSnackBar();
-                            }
-                          }
-                        },
-                      ),
+                          }),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -182,15 +165,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   //navigate to home view
   void navigateToHomeView() {
     context.pushReplacementNamed(RoutesName.homeView);
-  }
-
-  // snack bar about successful login
-  void successfulLogin() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Login Successful'),
-      ),
-    );
   }
 
   InputDecoration buildInputDecoration({
