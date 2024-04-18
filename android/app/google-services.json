@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "695710727551",
+    "project_id": "dalel-3a36f",
+    "storage_bucket": "dalel-3a36f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695710727551:android:f06b62df21391d38d8ae4a",
+        "android_client_info": {
+          "package_name": "com.hashem.dalel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEl7N_o4buHOpMmzGfkP50o5TlaVt6ZtM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

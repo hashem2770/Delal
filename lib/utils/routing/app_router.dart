@@ -1,5 +1,6 @@
 import 'package:dalel/features/presentation/views/auth/views/login_view.dart';
 import 'package:dalel/features/presentation/views/auth/views/signup_view.dart';
+import 'package:dalel/features/presentation/views/home/views/home_view.dart';
 import 'package:dalel/features/presentation/views/on_boarding/views/on_boarding_ai_view.dart';
 import 'package:dalel/features/presentation/views/on_boarding/views/on_boarding_explore_view.dart';
 import 'package:dalel/features/presentation/views/on_boarding/views/on_boarding_historical_view.dart';
@@ -41,6 +42,12 @@ final router = GoRouter(
       path: '/login',
       name:  RoutesName.loginView,
       builder: (context, state) => const LoginView(),
+    ),
+    GoRoute(
+      path: '/homeView',
+      //todo: add name
+      name:  RoutesName.homeView,
+      builder: (context, state) => const HomeView(),
     ),
   ],
 );
