@@ -19,6 +19,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  bool passwordVisible = false;
 
   @override
   void dispose() {
@@ -94,9 +95,23 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                           return null;
                         },
                         controller: passwordController,
+                        obscureText: passwordVisible,
+                        keyboardType: TextInputType.visiblePassword,
                         decoration: buildInputDecoration(
-                          hintText: 'Password',
-                          label: 'Password',
+                          suffixIcon: IconButton(
+                            icon: Icon(passwordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off),
+                            onPressed: () {
+                              setState(
+                                () {
+                                  passwordVisible = !passwordVisible;
+                                },
+                              );
+                            },
+                          ),
+                          hintText: 'password',
+                          label: 'password',
                         ),
                       ),
                       Row(
@@ -170,8 +185,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   InputDecoration buildInputDecoration({
     required String hintText,
     required String label,
+    IconButton? suffixIcon,
   }) {
     return InputDecoration(
+      suffixIcon: suffixIcon,
       hintText: hintText,
       label: Text(label),
       border: const OutlineInputBorder(

@@ -17,6 +17,7 @@ class SignUpViewBody extends StatefulWidget {
 class _SignUpViewBodyState extends State<SignUpViewBody> {
   final _formKey = GlobalKey<FormState>();
   bool agreedToTerms = false;
+  bool passwordVisible=false;
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -101,9 +102,22 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     return null;
                   },
                   controller: passwordController,
+                  obscureText:  passwordVisible,
                   decoration: buildInputDecoration(
                     hintText: 'Password',
                     label: 'Password',
+                    suffixIcon: IconButton(
+                      icon: Icon(passwordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off),
+                      onPressed: () {
+                        setState(
+                              () {
+                            passwordVisible = !passwordVisible;
+                          },
+                        );
+                      },
+                    ),
                   ),
                 ),
                 //const SizedBox(height: 16),
@@ -211,9 +225,13 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
     ));
   }
 
-  InputDecoration buildInputDecoration(
-      {required String hintText, required String label}) {
+  InputDecoration buildInputDecoration({
+    required String hintText,
+    required String label,
+    IconButton? suffixIcon,
+  }) {
     return InputDecoration(
+      suffixIcon: suffixIcon,
       hintText: hintText,
       label: Text(label),
       border: const OutlineInputBorder(
