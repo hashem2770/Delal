@@ -195,6 +195,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
     context.goNamed(RoutesName.homeView);
   }
 
+
   // snack bar about successful login
   void successfulSignUp() {
     ScaffoldMessenger.of(context).showSnackBar(
